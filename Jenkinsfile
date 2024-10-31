@@ -9,7 +9,7 @@ pipeline {
     stage('docker build and push') {
       steps {
         sh '''
-		version=$(ansible master -m shell -a "kubectl get deploy | grep web | awk '{print $1}' | awk -F- '{print $2}'")
+		version=$(ansible master -m shell -a "sudo kubectl get deploy | grep web | awk '{print $1}' | awk -F- '{print $2}'")
 		if [ -z "$version" ]
 		then
 			now="blue"
