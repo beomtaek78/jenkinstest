@@ -19,8 +19,8 @@ pipeline {
     stage('deploy and service') {
       steps {
         sh '''
-        ansible master -m shell -a 'sudo kubectl create deploy web-red --replicas=3 --port=80 --image=brian24/keduitlab:${now}'
-        ansible master -m shell -a 'sudo kubectl expose deploy web-red --type=LoadBalancer --port=80 --target-port=80 --name=web-red-svc'
+        ansible master -m shell -a 'sudo kubectl create deploy web-${now} --replicas=3 --port=80 --image=brian24/keduitlab:${now}'
+        ansible master -m shell -a 'sudo kubectl expose deploy web-${now} --type=LoadBalancer --port=80 --target-port=80 --name=web-${now}-svc'
         '''
       }
     }
