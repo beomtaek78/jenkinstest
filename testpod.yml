@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mariadb-service
+  name: web-service
 spec:
   selector:
     app: web
