@@ -9,7 +9,7 @@ pipeline {
     stage('delivery and deployment') {
       steps {
         sh '''
-        ansible master -m copy --src testpod.yml --dest /root/testpod.yml
+        ansible master -m copy -a "src=testpod.yml dest=/root/testpod.yml"
         now=$(date +%y%m%d%H%M)
         sudo docker build -t brian24/keduitlab:${now} .
         sudo docker push brian24/keduitlab:${now}
